@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Figtree:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f4f4f2;color:#1f2025;font-family:Figtree,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-wrap:pretty}
+a{color:#1f2025}a:hover{color:oklch(0.48 0.1 170)}
+*{box-sizing:border-box}
+@keyframes c2rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+[data-c2-reveal]{opacity:0;filter:blur(14px);transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),filter .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+[data-c2-reveal="in"]{opacity:1;filter:blur(0);transform:none}
+@media (prefers-reduced-motion:reduce){[data-c2-reveal]{opacity:1;filter:none;transform:none;transition:none}}
+</style>
+</helmet>
+
+<sc-if value="{{ showBar }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Announcement" style="background:#1f2025;color:#f4f4f2;font-size:13px;letter-spacing:0.01em;padding:11px clamp(20px,5vw,64px);display:flex;justify-content:center;align-items:center;gap:16px;text-align:center">
+  <span>You just heard about AI Positive Drift. Here's the research behind it.</span>
+  <a href="#research" style="color:#f4f4f2;text-decoration:underline;text-underline-offset:3px;white-space:nowrap">Read on ↓</a>
+</div>
+</sc-if>
+
+<sc-if value="{{ showPopup }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;left:clamp(16px,3vw,32px);bottom:clamp(16px,3vw,32px);z-index:50;max-width:340px;background:#1f2025;color:#f4f4f2;padding:20px 22px 22px;box-shadow:0 20px 50px rgba(31,32,37,0.25);animation:c2rise .5s ease .8s both">
+  <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">
+    <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#73f5d1">From the talk</div>
+    <button onClick="{{ dismiss }}" aria-label="Dismiss" style="background:none;border:0;color:#f4f4f2;cursor:pointer;font-size:18px;line-height:1;padding:0;opacity:0.7">×</button>
+  </div>
+  <p style="font-family:'DM Serif Display',Georgia,serif;font-size:21px;line-height:1.25;margin:10px 0 14px">You just heard about AI Positive Drift. Here's the research behind it.</p>
+  <a href="#research" style="color:#f4f4f2;font-size:13px;text-decoration:underline;text-underline-offset:3px">Read the findings ↓</a>
+</div>
+</sc-if>
+
+<header data-screen-label="Nav" style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px clamp(20px,5vw,64px);border-bottom:1px solid rgba(31,32,37,0.12)">
+  <a href="#top" style="text-decoration:none;display:flex;align-items:center;gap:14px">
+    <img src="uploads/C2 Advisory Logo Black.svg" alt="C2 Advisory" style="height:40px;width:auto;display:block"><span style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #666a72; margin-top: 5px">London · New York</span>
+    
+  </a>
+  <nav style="display:flex;gap:28px;align-items:center;font-size:14px">
+    <a href="#problem" style="text-decoration:none;color:#666a72">The problem</a>
+    <a href="#services" style="text-decoration:none;color:#666a72">What we do</a>
+    <a href="#team" style="text-decoration:none;color:#666a72">Partners</a>
+    <a href="#" onClick="{{ openConversation }}" style="text-decoration:none;display:inline-flex;white-space:nowrap;flex:none;align-items:center;height:40px;padding:0 18px;border:1px solid #1f2025;font-weight:500;font-size:14px" style-hover="background:#1f2025;color:#f4f4f2">Start a conversation</a>
+  </nav>
+</header>
+
+<section id="top" data-screen-label="Hero" style="padding:clamp(72px,11vw,150px) clamp(20px,5vw,64px) clamp(64px,9vw,120px);max-width:1280px;margin:0 auto">
+  <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.48 0.1 170);font-weight:500;margin-bottom:28px">Human capability in the age of AI</div>
+  <h1 data-c2-reveal="1" style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(44px,7.2vw,104px);line-height:0.98;letter-spacing:-0.025em;margin:0;max-width:22ch">Technology will<br>become ubiquitous.<br><em style="font-style:italic;font-weight:300;color:oklch(0.48 0.1 170)">Human Advantage</em><br>will not.</h1>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;align-items:end;margin-top:clamp(40px,6vw,72px);padding-top:32px;border-top:1px solid rgba(31,32,37,0.12)">
+    <div>
+      <p style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(22px,2.2vw,30px);line-height:1.3;margin:0 0 14px;letter-spacing:-0.01em">Building the Human Advantage in the AI-enabled workplace.</p>
+      <p style="font-size:17px;line-height:1.6;color:#666a72;margin:0;max-width:52ch">We help organisations build the leadership, culture and human capability required to perform in the age of AI.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-start">
+      <a href="#" onClick="{{ openResearch }}" style="text-decoration:none;display:inline-flex;white-space:nowrap;flex:none;align-items:center;justify-content:center;height:52px;padding:0 26px;background:#1f2025;color:#f4f4f2;font-weight:500;font-size:15px" style-hover="background:oklch(0.48 0.1 170);color:#f4f4f2">Request the research</a>
+      <a href="#" onClick="{{ openConversation }}" style="text-decoration:none;display:inline-flex;white-space:nowrap;flex:none;align-items:center;justify-content:center;height:52px;padding:0 26px;border:1px solid #1f2025;color:#1f2025;font-weight:500;font-size:15px" style-hover="background:#1f2025;color:#f4f4f2">Start a conversation</a>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Proof" style="border-top:1px solid rgba(31,32,37,0.12);border-bottom:1px solid rgba(31,32,37,0.12);background:#e9eae7">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,64px)">
+    <figure style="margin:0;max-width:900px">
+      <blockquote style="margin:0;font-family:'DM Serif Display',Georgia,serif;font-size:clamp(24px,2.8vw,38px);line-height:1.25;letter-spacing:-0.015em;font-weight:400">“The team has a rare ability to build awareness with critical stakeholders while genuinely understanding the challenges we face as a client. They don't arrive with a script.”</blockquote>
+      <figcaption style="margin-top:22px;font-size:14px;color:#666a72;display:flex;gap:10px;align-items:baseline"><span style="color:#1f2025;font-weight:500">Christiane Winter</span><span>CHRO, StepStone</span></figcaption>
+    </figure>
+    <div style="margin-top:clamp(48px,6vw,72px);padding-top:32px;border-top:1px solid rgba(31,32,37,0.12)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:24px 32px;align-items:center"><div style="display:flex;align-items:center;justify-content:center;height:64px"><img src="uploads/netflix-black.svg" alt="Netflix" style="width:120px;max-width:100%;height:auto;object-fit:contain;opacity:0.4"></div><div style="display:flex;align-items:center;justify-content:center;height:64px"><img src="uploads/amazon-black.svg" alt="Amazon" style="width:126px;max-width:100%;height:auto;object-fit:contain;opacity:0.4"></div><div style="display:flex;align-items:center;justify-content:center;height:64px"><img src="uploads/jpmorgan-black.svg" alt="J.P. Morgan" style="width:132px;max-width:100%;height:auto;object-fit:contain;opacity:0.4"></div><div style="display:flex;align-items:center;justify-content:center;height:64px"><img src="uploads/fifa-black.svg" alt="FIFA" style="width:102px;max-width:100%;height:auto;object-fit:contain;opacity:0.4"></div><div style="display:flex;align-items:center;justify-content:center;height:64px"><img src="uploads/bnp-paribas-black.svg" alt="BNP Paribas" style="width:126px;max-width:100%;height:auto;object-fit:contain;opacity:0.4"></div><div style="display:flex;align-items:center;justify-content:center;height:64px"><img src="uploads/morgan-stanley-black.svg" alt="Morgan Stanley" style="width:138px;max-width:100%;height:auto;object-fit:contain;opacity:0.4"></div><div style="display:flex;align-items:center;justify-content:center;height:64px"><img src="uploads/unilever-black.svg" alt="Unilever" style="height:52px;width:auto;object-fit:contain;opacity:0.4"></div><div style="display:flex;align-items:center;justify-content:center;height:64px"><img src="uploads/kpmg-black.svg" alt="KPMG" style="width:96px;max-width:100%;height:auto;object-fit:contain;opacity:0.4"></div><div style="display:flex;align-items:center;justify-content:center;height:64px"><img src="uploads/starbucks-black.svg" alt="Starbucks" style="height:52px;width:auto;object-fit:contain;opacity:0.4"></div><div style="display:flex;align-items:center;justify-content:center;height:64px"><img src="uploads/pwc-black.svg" alt="PwC" style="height:39px;width:auto;object-fit:contain;opacity:0.4"></div><div style="display:flex;align-items:center;justify-content:center;height:64px"><img src="uploads/rolls-royce-motor-cars-black.svg" alt="Rolls-Royce" style="width:126px;max-width:100%;height:auto;object-fit:contain;opacity:0.4"></div></div>
+      <p style="margin:20px 0 0;font-size:12px;color:#666a72">Work delivered by the team through their prior company.</p>
+    </div>
+  </div>
+</section>
+
+<section id="problem" data-screen-label="Problem" style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px)">
+  <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.48 0.1 170);font-weight:500;margin-bottom:24px">The problem we solve</div>
+  <h2 data-c2-reveal="1" style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,52px);line-height:1.12;letter-spacing:-0.02em;margin:0;max-width:26ch;text-wrap:balance"><strong style="font-weight:500">AI Positive Drift</strong> is the gradual erosion of Autonomy, Competence and Connection that can occur as AI becomes embedded in everyday work.</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:clamp(48px,6vw,80px)">
+    <div style="position:relative;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 0% 100%,oklch(0.9 0.06 170 / 0.55),transparent 60%),#f2f3f0;border-radius:4px;padding:28px 24px 26px;min-height:300px;display:flex;flex-direction:column;gap:14px;border:1px solid rgba(31,32,37,0.08);transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s ease" style-hover="transform:translateY(-6px);border-color:oklch(0.48 0.1 170 / 0.6)">
+      <div aria-hidden="true" style="position:absolute;top:-34px;right:-10px;font-family:'DM Serif Display',Georgia,serif;font-size:240px;line-height:1;letter-spacing:-0.06em;color:transparent;-webkit-text-stroke:1px rgba(31,32,37,0.22);pointer-events:none;user-select:none">01</div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#1f2025,transparent 65%)"></div>
+      <div style="position:relative;display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:oklch(0.48 0.1 170);font-weight:500"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:oklch(0.48 0.1 170)"></span>01</div>
+      <h3 style="position:relative;font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(34px,3vw,44px);margin:auto 0 0;letter-spacing:-0.02em;line-height:1">Autonomy</h3>
+      <p style="position:relative;margin:0;font-size:16px;line-height:1.6;color:#666a72;max-width:30ch">AI forms the first view, frames the options and makes the recommendation.</p>
+    </div>
+    <div style="position:relative;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 0% 100%,oklch(0.9 0.06 170 / 0.55),transparent 60%),#f2f3f0;border-radius:4px;padding:28px 24px 26px;min-height:300px;display:flex;flex-direction:column;gap:14px;border:1px solid rgba(31,32,37,0.08);transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s ease" style-hover="transform:translateY(-6px);border-color:oklch(0.48 0.1 170 / 0.6)">
+      <div aria-hidden="true" style="position:absolute;top:-34px;right:-10px;font-family:'DM Serif Display',Georgia,serif;font-size:240px;line-height:1;letter-spacing:-0.06em;color:transparent;-webkit-text-stroke:1px rgba(31,32,37,0.22);pointer-events:none;user-select:none">02</div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#1f2025,transparent 65%)"></div>
+      <div style="position:relative;display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:oklch(0.48 0.1 170);font-weight:500"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:oklch(0.48 0.1 170)"></span>02</div>
+      <h3 style="position:relative;font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(34px,3vw,44px);margin:auto 0 0;letter-spacing:-0.02em;line-height:1">Competence</h3>
+      <p style="position:relative;margin:0;font-size:16px;line-height:1.6;color:#666a72;max-width:30ch">Capability erodes while outputs look fine.</p>
+    </div>
+    <div style="position:relative;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 0% 100%,oklch(0.9 0.06 170 / 0.55),transparent 60%),#f2f3f0;border-radius:4px;padding:28px 24px 26px;min-height:300px;display:flex;flex-direction:column;gap:14px;border:1px solid rgba(31,32,37,0.08);transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s ease" style-hover="transform:translateY(-6px);border-color:oklch(0.48 0.1 170 / 0.6)">
+      <div aria-hidden="true" style="position:absolute;top:-34px;right:-10px;font-family:'DM Serif Display',Georgia,serif;font-size:240px;line-height:1;letter-spacing:-0.06em;color:transparent;-webkit-text-stroke:1px rgba(31,32,37,0.22);pointer-events:none;user-select:none">03</div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#1f2025,transparent 65%)"></div>
+      <div style="position:relative;display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:oklch(0.48 0.1 170);font-weight:500"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:oklch(0.48 0.1 170)"></span>03</div>
+      <h3 style="position:relative;font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(34px,3vw,44px);margin:auto 0 0;letter-spacing:-0.02em;line-height:1">Connection</h3>
+      <p style="position:relative;margin:0;font-size:16px;line-height:1.6;color:#666a72;max-width:30ch">Work feels efficient but hollow, and AI dependence increases over time.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Why C2" style="background:#1f2025;color:#f4f4f2">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px)">
+    <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#73f5d1;font-weight:500;margin-bottom:24px">Why C2 Advisory</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border-top:1px solid rgba(244,244,242,0.18)">
+      <div style="padding:32px 32px 32px 0;border-bottom:1px solid rgba(244,244,242,0.18)">
+        <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:26px;margin:0 0 10px;letter-spacing:-0.01em">We price outcomes, not hours.</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(244,244,242,0.68)">Fees are tied to the change we agree to deliver, so our incentives sit with yours.</p>
+      </div>
+      <div style="padding:32px 32px 32px 0;border-bottom:1px solid rgba(244,244,242,0.18)">
+        <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:26px;margin:0 0 10px;letter-spacing:-0.01em">Selective, not scalable.</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(244,244,242,0.68)">We take on a small number of clients each year and give each one the partners' full attention.</p>
+      </div>
+      <div style="padding:32px 32px 32px 0;border-bottom:1px solid rgba(244,244,242,0.18)">
+        <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:26px;margin:0 0 10px;letter-spacing:-0.01em">Direct access to the research, not a rotating bench.</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(244,244,242,0.68)">You work with the people who produced the evidence, from first conversation to final review.</p>
+      </div>
+      <div style="padding:32px 32px 32px 0;border-bottom:1px solid rgba(244,244,242,0.18)">
+        <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:26px;margin:0 0 10px;letter-spacing:-0.01em">One team, the whole talent life cycle.</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(244,244,242,0.68)">Assessment, development and advisory from a single group, so nothing is lost between hand-offs.</p>
+      </div>
+      <div style="padding:32px 32px 32px 0;border-bottom:1px solid rgba(244,244,242,0.18)">
+        <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:26px;margin:0 0 10px;letter-spacing:-0.01em">Original research, not a licensed framework.</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(244,244,242,0.68)">Our work rests on studies we designed and ran ourselves, and we publish what we find.</p>
+      </div>
+      <div style="padding:32px 32px 32px 0;border-bottom:1px solid rgba(244,244,242,0.18)">
+        <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:26px;margin:0 0 10px;letter-spacing:-0.01em">Built to transfer capability, not create dependency.</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(244,244,242,0.68)">Every engagement is designed so your people can carry the work on without us.</p>
+      </div>
+    </div>
+    <p style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(26px,3.2vw,44px);line-height:1.15;letter-spacing:-0.02em;margin:clamp(48px,6vw,72px) 0 0;max-width:22ch">We measure impact in <em style="color:#73f5d1">behaviour change</em>, not training days.</p>
+  </div>
+</section>
+
+<section id="services" data-screen-label="What we do" style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px)">
+  <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.48 0.1 170);font-weight:500;margin-bottom:24px">What we do</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,3vw,40px)">
+    <div style="background:#e9eae7;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:20px;min-height:340px">
+      <div data-c2-reveal="1" style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(56px,6vw,84px);line-height:0.9;letter-spacing:-0.04em;color:oklch(0.48 0.1 170);font-weight:300">01</div>
+      <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:28px;margin:auto 0 0;letter-spacing:-0.01em">Human Advantage Assessment</h3>
+      <p style="margin:0;font-size:15px;line-height:1.6;color:#666a72">Measures Autonomy, Competence and Connection across the organisation and shows where AI Positive Drift is already underway.</p>
+    </div>
+    <div style="background:#e9eae7;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:20px;min-height:340px">
+      <div data-c2-reveal="1" style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(56px,6vw,84px);line-height:0.9;letter-spacing:-0.04em;color:oklch(0.48 0.1 170);font-weight:300">02</div>
+      <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:28px;margin:auto 0 0;letter-spacing:-0.01em">Development</h3>
+      <p style="margin:0;font-size:15px;line-height:1.6;color:#666a72">Programmes that build the behaviours required for performance, licensing the Behaviour Library for clients to rebrand and training internal facilitators.</p>
+    </div>
+    <div style="background:#e9eae7;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:20px;min-height:340px">
+      <div data-c2-reveal="1" style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(56px,6vw,84px);line-height:0.9;letter-spacing:-0.04em;color:oklch(0.48 0.1 170);font-weight:300">03</div>
+      <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:28px;margin:auto 0 0;letter-spacing:-0.01em">Organisational Advisory</h3>
+      <p style="margin:0;font-size:15px;line-height:1.6;color:#666a72">Embedding human performance into AI deployment, work design, leadership, culture and workforce strategy at the point decisions are made.</p>
+    </div>
+  </div>
+</section>
+
+<section id="team" data-screen-label="Partners" style="border-top:1px solid rgba(31,32,37,0.12)">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px)">
+    <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.48 0.1 170);font-weight:500;margin-bottom:24px">Who does the work</div>
+    <h2 data-c2-reveal="1" style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(34px,4.6vw,64px);line-height:1.05;letter-spacing:-0.025em;margin:0 0 clamp(40px,5vw,64px);text-wrap:balance">Five partners. Two cities. One evidence base.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,56px);align-items:end;padding-bottom:clamp(32px,4vw,48px);border-bottom:1px solid rgba(31,32,37,0.12)">
+      <div style="aspect-ratio:4/5;max-width:520px"><image-slot id="partner-michelle" shape="rect" placeholder="Portrait · Dr Michelle P. King" style="width:100%;height:100%"></image-slot></div>
+      <div>
+        <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#666a72;margin-bottom:14px">Co-Founder, C2 Advisory</div>
+        <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(30px,3.4vw,46px);margin:0 0 18px;letter-spacing:-0.02em;line-height:1.05">Dr Michelle P. King</h3>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#666a72;max-width:46ch">Organisational researcher and author. Leads the AI Positive Drift research programme and the evidence base behind the Human Advantage model.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(24px,3vw,40px);margin-top:clamp(32px,4vw,48px)">
+      <div>
+        <div style="aspect-ratio:4/5"><image-slot id="partner-leo" shape="rect" placeholder="Portrait · Leo Harrison" style="width:100%;height:100%"></image-slot></div>
+        <h4 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:24px;margin:18px 0 4px;letter-spacing:-0.01em">Leo Harrison</h4>
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#666a72;margin-bottom:10px">Partner</div>
+        <p style="margin:0;font-size:14px;line-height:1.55;color:#666a72">Leads assessment design and the translation of research findings into organisational diagnostics.</p>
+      </div>
+      <div>
+        <div style="aspect-ratio:4/5"><image-slot id="partner-sophie" shape="rect" placeholder="Portrait · Sophie Rigby" style="width:100%;height:100%"></image-slot></div>
+        <h4 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:24px;margin:18px 0 4px;letter-spacing:-0.01em">Sophie Rigby</h4>
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#666a72;margin-bottom:10px">Partner</div>
+        <p style="margin:0;font-size:14px;line-height:1.55;color:#666a72">Leads development programmes and the Behaviour Library, with a background in leadership and culture change.</p>
+      </div>
+      <div>
+        <div style="aspect-ratio:4/5"><image-slot id="partner-nick" shape="rect" placeholder="Portrait · Nick Homer" style="width:100%;height:100%"></image-slot></div>
+        <h4 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:24px;margin:18px 0 4px;letter-spacing:-0.01em">Nick Homer</h4>
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#666a72;margin-bottom:10px">Partner</div>
+        <p style="margin:0;font-size:14px;line-height:1.55;color:#666a72">Leads organisational advisory, embedding human performance into AI deployment and workforce strategy.</p>
+      </div>
+      <div>
+        <div style="aspect-ratio:4/5"><image-slot id="partner-selina" shape="rect" placeholder="Portrait · Selina Suresh" style="width:100%;height:100%"></image-slot></div>
+        <h4 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:24px;margin:18px 0 4px;letter-spacing:-0.01em">Selina Suresh</h4>
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#666a72;margin-bottom:10px">Partner</div>
+        <p style="margin:0;font-size:14px;line-height:1.55;color:#666a72">Leads talent and organisational change engagements across the New York practice.</p>
+      </div>
+    </div>
+    <p style="margin:clamp(48px,6vw,72px) 0 0;font-family:'DM Serif Display',Georgia,serif;font-size:clamp(20px,2vw,26px);line-height:1.4;color:#1f2025;max-width:60ch;letter-spacing:-0.01em">Based in London and New York, we combine original research into human performance with deep experience across talent, leadership, culture and organisational change.</p>
+  </div>
+</section>
+
+<section id="research" data-screen-label="Current thinking" style="background:#e9eae7;border-top:1px solid rgba(31,32,37,0.12)">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:clamp(36px,5vw,56px)">
+      <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.48 0.1 170);font-weight:500">Current thinking</div>
+      <div style="font-size:13px;color:#666a72">Q1 · AI Positive Drift research</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3vw,40px)">
+      <article style="background:#f4f4f2;border:1px solid rgba(31,32,37,0.12);padding:clamp(28px,3.5vw,48px);display:flex;flex-direction:column;gap:24px">
+        <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#666a72">Q1 · AI Positive Drift research</div>
+        <div data-c2-reveal="1" style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(88px,11vw,168px);line-height:0.85;letter-spacing:-0.05em;font-weight:300;color:#1f2025">39<span style="font-size:0.5em;color:oklch(0.48 0.1 170)">%</span></div>
+        <div>
+          <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:30px;margin:0 0 12px;letter-spacing:-0.015em;line-height:1.1">The ROI on AI isn't happening</h3>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:#666a72">Only 39% of organisations report a measurable EBIT effect from AI.</p>
+        </div>
+        <div style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(31,32,37,0.12);font-size:12px;color:#666a72">Source: McKinsey, <em>The State of AI</em> 2025 · 1,993 participants · 105 countries</div>
+      </article>
+      <article style="background:#f4f4f2;border:1px solid rgba(31,32,37,0.12);padding:clamp(28px,3.5vw,48px);display:flex;flex-direction:column;gap:24px">
+        <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#666a72">Q1 · AI Positive Drift research</div>
+        <div style="display:flex;gap:clamp(20px,3vw,40px);align-items:baseline;flex-wrap:wrap">
+          <div data-c2-reveal="1" style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(88px,11vw,168px);line-height:0.85;letter-spacing:-0.05em;font-weight:300;color:#1f2025">60<span style="font-size:0.5em;color:oklch(0.48 0.1 170)">%</span></div>
+          <div data-c2-reveal="1" style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(56px,6.5vw,96px);line-height:0.85;letter-spacing:-0.05em;font-weight:300;color:#666a72">50<span style="font-size:0.5em;color:oklch(0.48 0.1 170)">%</span></div>
+        </div>
+        <div>
+          <h3 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:30px;margin:0 0 12px;letter-spacing:-0.015em;line-height:1.1">What lies underneath</h3>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:#666a72">60% do not trust AI outputs yet still use them. 50% say AI tools have reduced meaningful conversations with colleagues.</p>
+        </div>
+        <div style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(31,32,37,0.12);font-size:12px;color:#666a72">Source: C2 Advisory, AI Positive Drift research, Q1</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact" data-screen-label="Closing CTA" style="background:#1f2025;color:#f4f4f2">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(88px,12vw,160px) clamp(20px,5vw,64px);text-align:center;display:flex;flex-direction:column;align-items:center">
+    <h2 data-c2-reveal="1" style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(36px,5vw,68px);line-height:1.02;letter-spacing:-0.025em;margin:0;max-width:18ch;text-wrap:balance">We help organisations build their human advantage <em style="color:#73f5d1">deliberately</em>.</h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:40px">
+      <a href="#" onClick="{{ openResearch }}" style="text-decoration:none;display:inline-flex;white-space:nowrap;flex:none;align-items:center;justify-content:center;height:52px;padding:0 26px;background:#f4f4f2;color:#1f2025;font-weight:500;font-size:15px" style-hover="background:#73f5d1;color:#1f2025">Request the research</a>
+      <a href="#" onClick="{{ openConversation }}" style="text-decoration:none;display:inline-flex;white-space:nowrap;flex:none;align-items:center;justify-content:center;height:52px;padding:0 26px;border:1px solid #f4f4f2;color:#f4f4f2;font-weight:500;font-size:15px" style-hover="background:#f4f4f2;color:#1f2025">Start a conversation</a>
+    </div>
+  </div>
+</section>
+
+
+<sc-if value="{{ showResearch }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ close }}" style="position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;padding:20px">
+  <div onClick="{{ stop }}" role="dialog" aria-modal="true" style="width:100%;max-width:520px;max-height:100%;overflow:auto;background:#f4f4f2;color:#1f2025;border-radius:0;padding:clamp(24px,4vw,40px);animation:c2rise .3s ease both;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+      <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.48 0.1 170);font-weight:500">C2 Advisory</div>
+      <button onClick="{{ close }}" aria-label="Close" style="background:none;border:0;color:#1f2025;cursor:pointer;font-size:22px;line-height:1;padding:0">×</button>
+    </div>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+    <h2 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(28px,3vw,36px);line-height:1.04;letter-spacing:-0.01em;margin:16px 0 8px;text-wrap:balance">Request the research</h2>
+    <p style="margin:0 0 24px;font-size:15px;line-height:1.55;color:#666a72">Tell us where to send the AI Positive Drift findings.</p>
+    <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:16px">
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#1f2025">Full name
+          <input name="name" type="text" placeholder="Jane Smith" required="" style="height:44px;padding:0 12px;border:1px solid rgba(31,32,37,0.2);border-radius:0;background:#f4f4f2;font:inherit;font-size:15px;color:#1f2025;outline:none" style-focus="border-color:#1f2025">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#1f2025">Work email
+          <input name="email" type="email" placeholder="jane@company.com" required="" style="height:44px;padding:0 12px;border:1px solid rgba(31,32,37,0.2);border-radius:0;background:#f4f4f2;font:inherit;font-size:15px;color:#1f2025;outline:none" style-focus="border-color:#1f2025">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#1f2025">Organisation
+          <input name="org" type="text" placeholder="Company name" required="" style="height:44px;padding:0 12px;border:1px solid rgba(31,32,37,0.2);border-radius:0;background:#f4f4f2;font:inherit;font-size:15px;color:#1f2025;outline:none" style-focus="border-color:#1f2025">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#1f2025">Role
+          <input name="role" type="text" placeholder="e.g. Chief People Officer" style="height:44px;padding:0 12px;border:1px solid rgba(31,32,37,0.2);border-radius:0;background:#f4f4f2;font:inherit;font-size:15px;color:#1f2025;outline:none" style-focus="border-color:#1f2025">
+        </label>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px">
+        <span style="font-size:12px;color:#666a72;max-width:32ch">We'll only use your details to respond to this request.</span>
+        <button type="submit" style="display:inline-flex;white-space:nowrap;flex:none;align-items:center;justify-content:center;height:52px;padding:0 26px;background:#1f2025;color:#f4f4f2;border:0;border-radius:0;font:inherit;font-weight:500;font-size:15px;cursor:pointer" style-hover="background:oklch(0.48 0.1 170);color:#ffffff">Send me the research</button>
+      </div>
+    </form>
+    </sc-if>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+    <h2 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(28px,3vw,36px);line-height:1.04;letter-spacing:-0.01em;margin:16px 0 8px;text-wrap:balance">Thank you.</h2>
+    <p style="margin:0 0 24px;font-size:15px;line-height:1.55;color:#666a72">The research is on its way to your inbox. One of the partners will follow up within two working days.</p>
+    <button onClick="{{ close }}" style="display:inline-flex;white-space:nowrap;align-items:center;justify-content:center;height:52px;padding:0 26px;border:1px solid #1f2025;background:none;color:#1f2025;border-radius:0;font:inherit;font-weight:500;font-size:15px;cursor:pointer" style-hover="background:#1f2025;color:#f4f4f2">Close</button>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ showConversation }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ close }}" style="position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;padding:20px">
+  <div onClick="{{ stop }}" role="dialog" aria-modal="true" style="width:100%;max-width:520px;max-height:100%;overflow:auto;background:#f4f4f2;color:#1f2025;border-radius:0;padding:clamp(24px,4vw,40px);animation:c2rise .3s ease both;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+      <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.48 0.1 170);font-weight:500">C2 Advisory</div>
+      <button onClick="{{ close }}" aria-label="Close" style="background:none;border:0;color:#1f2025;cursor:pointer;font-size:22px;line-height:1;padding:0">×</button>
+    </div>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+    <h2 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(28px,3vw,36px);line-height:1.04;letter-spacing:-0.01em;margin:16px 0 8px;text-wrap:balance">Start a conversation</h2>
+    <p style="margin:0 0 24px;font-size:15px;line-height:1.55;color:#666a72">A short note is enough. One of the partners will reply personally.</p>
+    <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:16px">
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#1f2025">Full name
+          <input name="name" type="text" placeholder="Jane Smith" required="" style="height:44px;padding:0 12px;border:1px solid rgba(31,32,37,0.2);border-radius:0;background:#f4f4f2;font:inherit;font-size:15px;color:#1f2025;outline:none" style-focus="border-color:#1f2025">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#1f2025">Work email
+          <input name="email" type="email" placeholder="jane@company.com" required="" style="height:44px;padding:0 12px;border:1px solid rgba(31,32,37,0.2);border-radius:0;background:#f4f4f2;font:inherit;font-size:15px;color:#1f2025;outline:none" style-focus="border-color:#1f2025">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#1f2025">Organisation
+          <input name="org" type="text" placeholder="Company name" style="height:44px;padding:0 12px;border:1px solid rgba(31,32,37,0.2);border-radius:0;background:#f4f4f2;font:inherit;font-size:15px;color:#1f2025;outline:none" style-focus="border-color:#1f2025">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#1f2025">What's on your mind?
+          <textarea name="message" rows="4" placeholder="Where you are with AI in your organisation, and what you'd like to talk through." style="padding:12px;border:1px solid rgba(31,32,37,0.2);border-radius:0;background:#f4f4f2;font:inherit;font-size:15px;line-height:1.5;color:#1f2025;outline:none;resize:vertical" style-focus="border-color:#1f2025"></textarea>
+        </label>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px">
+        <span style="font-size:12px;color:#666a72;max-width:32ch">We'll only use your details to respond to this request.</span>
+        <button type="submit" style="display:inline-flex;white-space:nowrap;flex:none;align-items:center;justify-content:center;height:52px;padding:0 26px;background:#1f2025;color:#f4f4f2;border:0;border-radius:0;font:inherit;font-weight:500;font-size:15px;cursor:pointer" style-hover="background:oklch(0.48 0.1 170);color:#ffffff">Send</button>
+      </div>
+    </form>
+    </sc-if>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+    <h2 style="font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(28px,3vw,36px);line-height:1.04;letter-spacing:-0.01em;margin:16px 0 8px;text-wrap:balance">Thank you.</h2>
+    <p style="margin:0 0 24px;font-size:15px;line-height:1.55;color:#666a72">We've received your note. Expect a reply from London or New York within two working days.</p>
+    <button onClick="{{ close }}" style="display:inline-flex;white-space:nowrap;align-items:center;justify-content:center;height:52px;padding:0 26px;border:1px solid #1f2025;background:none;color:#1f2025;border-radius:0;font:inherit;font-weight:500;font-size:15px;cursor:pointer" style-hover="background:#1f2025;color:#f4f4f2">Close</button>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<footer data-screen-label="Footer" style="background:#1f2025;color:rgba(244,244,242,0.6);border-top:1px solid rgba(244,244,242,0.14)">
+  <div style="max-width:1280px;margin:0 auto;padding:28px clamp(20px,5vw,64px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px">
+    <img src="uploads/C2 Advisory Logo White.svg" alt="C2 Advisory" style="height:32px;width:auto;display:block;filter:brightness(0) invert(1)">
+    <span>London · New York</span>
+    <span>© 2026 C2 Advisory Ltd</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;announcement&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bar&quot;,&quot;popup&quot;,&quot;none&quot;],&quot;default&quot;:&quot;bar&quot;,&quot;tsType&quot;:&quot;'bar'|'popup'|'none'&quot;,&quot;section&quot;:&quot;Announcement&quot;}}">
+class Component extends DCLogic {
+  state = { dismissed: false, modal: null, sent: false };
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ modal: null, sent: false }); };
+    window.addEventListener('keydown', this._esc);
+    this._io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-c2-reveal', 'in'); this._io.unobserve(e.target); } }), { threshold: 0.15 });
+    this._observe = () => document.querySelectorAll('[data-c2-reveal="1"]').forEach(el => this._io.observe(el));
+    this._observe();
+    this._mo = new MutationObserver(() => this._observe());
+    this._mo.observe(document.body, { childList: true, subtree: true });
+  }
+  componentDidUpdate() { this._observe && this._observe(); }
+  componentWillUnmount() { window.removeEventListener('keydown', this._esc); this._io && this._io.disconnect(); this._mo && this._mo.disconnect(); }
+  renderVals() {
+    const mode = this.props.announcement ?? 'bar';
+    const open = (m) => (e) => { e && e.preventDefault(); this.setState({ modal: m, sent: false }); };
+    return {
+      showBar: mode === 'bar',
+      showPopup: mode === 'popup' && !this.state.dismissed,
+      dismiss: () => this.setState({ dismissed: true }),
+      showResearch: this.state.modal === 'research',
+      showConversation: this.state.modal === 'conversation',
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      openResearch: open('research'),
+      openConversation: open('conversation'),
+      close: () => this.setState({ modal: null, sent: false }),
+      stop: (e) => e.stopPropagation(),
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
